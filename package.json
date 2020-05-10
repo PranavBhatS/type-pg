@@ -5,8 +5,10 @@
   "main": "build/start.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --config \"./nodemon.json\"/",
     "start-dev": "nodemon --config \"./nodemon.json\"/"
   },
+  "heroku-run-build-script": true,
   "author": "pranav bhat",
   "license": "ISC",
   "devDependencies": {
