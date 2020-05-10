@@ -1,0 +1,41 @@
+{
+  "name": "express-with-typescript",
+  "version": "1.0.0",
+  "description": "creating express app using typescript",
+  "main": "build/start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "nodemon --config \"./nodemon.json\"/"
+  },
+  "author": "pranav bhat",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/express-jwt": "0.0.42",
+    "@types/jsonwebtoken": "^8.3.9",
+    "@types/node": "^13.13.2",
+    "nodemon": "^2.0.3",
+    "ts-node": "^8.8.2",
+    "tslint": "^6.1.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@overnightjs/core": "^1.6.15",
+    "@overnightjs/jwt": "^1.1.15",
+    "@overnightjs/logger": "^1.1.10",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/bluebird": "^3.5.30",
+    "@types/uuid": "^7.0.3",
+    "@types/validator": "^13.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.0.3",
+    "pg-hstore": "^2.3.3",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^5.21.7",
+    "sequelize-typescript": "^1.1.0",
+    "uuid": "^7.0.3"
+  }
+}
