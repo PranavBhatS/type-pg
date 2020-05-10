@@ -5,7 +5,8 @@
   "main": "build/start.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --config \"./nodemon.json\"/",
+    "start1": "tsc -p .",
+    "start": "concurrently \"tsc -p .\" \"node ./build/start.js\"",
     "start-dev": "nodemon --config \"./nodemon.json\"/"
   },
   "heroku-run-build-script": true,
@@ -35,6 +36,7 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.0.3",
     "pg-hstore": "^2.3.3",
+    "pm2": "^4.4.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.21.7",
     "sequelize-typescript": "^1.1.0",
