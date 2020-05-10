@@ -5,8 +5,9 @@
   "main": "build/start.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"tsc -p .\" \"node ./build/start.js\"",
+    "start": "npm run build && npm run next",
     "build": "tsc -p .",
+    "next":"node ./build/start.js",
     "heroku-prebuild": "npm install",
     "heroku-postbuild": "concurrently \"tsc -p .\" \"node ./build/start.js\"",
     "start-dev": "nodemon --config \"./nodemon.json\"/"
