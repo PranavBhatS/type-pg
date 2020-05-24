@@ -9,7 +9,6 @@
     "build": "tsc -p .",
     "next": "node ./build/start.js",
     "heroku-prebuild": "npm install",
-    "heroku-postbuild": "npm run build && npm run next",
     "start-dev": "nodemon --config \"./nodemon.json\"/"
   },
   "heroku-run-build-script": true,
