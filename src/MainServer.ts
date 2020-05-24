@@ -30,7 +30,7 @@ class MainServer extends Server {
         }
         super.addControllers(ctlrInstances);
     }
-    public start(port: number): void {
+    public start(port: any): void {
         this.app.get('*', (req, res) => {
             res.send(this.SERVER_STARTED + port);
         });
