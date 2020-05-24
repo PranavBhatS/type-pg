@@ -1,4 +1,5 @@
 import MainServer from './MainServer';
 
 const exampleServer = new MainServer();
-exampleServer.start(process.env.NODE_PORT || 3000);
+const { PORT=3000, LOCAL_ADDRESS='0.0.0.0' } = process.env
+exampleServer.start(process.env.NODE_PORT || PORT,LOCAL_ADDRESS);

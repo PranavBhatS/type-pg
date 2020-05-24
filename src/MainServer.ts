@@ -30,11 +30,11 @@ class MainServer extends Server {
         }
         super.addControllers(ctlrInstances);
     }
-    public start(port: any): void {
+    public start(port: any,LOCAL_ADDRESS:any): void {
         this.app.get('*', (req, res) => {
             res.send(this.SERVER_STARTED + port);
         });
-        this.app.listen(port, () => {
+        this.app.listen(port,LOCAL_ADDRESS, () => {
             sequelize.authenticate().then(async () => {
                 await sequelize.sync()
                 Logger.Imp("db connected");
