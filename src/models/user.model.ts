@@ -1,16 +1,17 @@
 import {
     Table, Column, Model, HasMany, DataType,
-    PrimaryKey, IsUUID, Unique, AutoIncrement
+    PrimaryKey, IsUUID, Unique, AutoIncrement, Sequelize
 } from 'sequelize-typescript';
 
 @Table({
-    timestamps:false
+    timestamps: true
 })
 export default class User extends Model<User> {
-    @IsUUID(4)
+    @IsUUID("4")
     @PrimaryKey
     @Column({
-        type:DataType.UUIDV4
+        type: DataType.UUID,
+        defaultValue: DataType.UUIDV4,
     })
     id?: any
 
@@ -27,5 +28,12 @@ export default class User extends Model<User> {
     @Column({
         type: DataType.TEXT, allowNull: false
     })
-    password!: string
+    password!: string;
+
+    @Column({
+        type: DataType.TEXT,
+        defaultValue: 'active'
+    })
+    status!: string
 }
+
