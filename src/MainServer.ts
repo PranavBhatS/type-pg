@@ -33,6 +33,7 @@ class MainServer extends Server {
                 Logger.Imp("db connected");
             })
             .catch(err=>{
+                console.log(err)
                 Logger.Err("error occered during db connection");
             })
             Logger.Imp(this.SERVER_STARTED + port);

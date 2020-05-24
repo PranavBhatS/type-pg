@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Middleware } from '@overnightjs/core';
+import { Controller, Get, Post, Middleware, Put } from '@overnightjs/core';
 import { Request, Response } from 'express';
 import User from '../models/user.model';
 import { Logger } from '@overnightjs/logger';
@@ -10,15 +10,14 @@ import { checkJwt } from './../middleware/checkJwt';
 export class UserController {
 
     @Post('')
-    @Middleware([checkJwt])
     private add(req: Request, res: Response) {
         let encryptedPassword = ''
-        PassWordSecurity.hashPassword(req.body.password+'', 12, (err, hash) => {
+        PassWordSecurity.hashPassword(req.body.password + '', 12, (err, hash) => {
             if (err) {
                 Logger.Err("user creation failed becoz of password encryption");
                 res.status(500).json({
                     error: "user creation failed becoz of password encryption",
-                    err:err.message
+                    err: err.message
                 })
                 return
             }
@@ -39,13 +38,15 @@ export class UserController {
                 .catch(err => {
                     Logger.Err("user creation failed");
                     res.status(500).json({
-                        error: "user creation failed"
+                        error: "user creation failed",
+                        err
                     })
                 })
         })
     }
 
     @Get('')
+    @Middleware([checkJwt])
     private async  get(req: Request, res: Response) {
         User.findAll().map(el => el.get({ plain: true })).then(users => {
             Logger.Info("get all user successfull")
@@ -62,6 +63,39 @@ export class UserController {
                 Logger.Err("get all users failed");
                 res.status(500).json({
                     error: "user creation failed"
+                })
+            })
+    }
+
+    @Put('update/:id')
+    @Middleware([checkJwt])
+    private async deactivate(req: Request, res: Response) {
+        User.update({
+            ...req.body
+        },
+            {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(updated => {
+                if (!updated[0]) {
+                    res.status(500).json({
+                        error: req.params.id + " id does not exist",
+                    })
+                }
+                res.send(
+                    {
+                        "message": "updated succesfuly"
+                        , updated
+                    }
+                );
+            })
+            .catch(err => {
+                Logger.Err("User update failed");
+                res.status(500).json({
+                    error: "User update failed",
+                    err
                 })
             })
     }
