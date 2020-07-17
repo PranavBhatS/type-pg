@@ -39,7 +39,7 @@ class MainServer extends Server {
                 await sequelize.sync()
                 Logger.Imp("db connected");
             })
-                .catch(err => {
+                .catch((err:any) => {
                     console.log(err)
                     Logger.Err("error occered during db connection");
                 })
