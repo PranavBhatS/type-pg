@@ -9,6 +9,9 @@
     "next": "node ./build/start.js",
     "start-dev": "nodemon --config \"./nodemon.json\"/"
   },
+  "engines": {
+    "node": "12.x"
+  },
   "heroku-run-build-script": true,
   "author": "pranav bhat",
   "license": "ISC",
